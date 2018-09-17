@@ -1,0 +1,86 @@
+dispatchTouchEvent ()  父容器  调用
+
+ boolean result = false;   
+
+
+MainActivity   ----》    mOnTouchListener   
+
+
+mOnTouchListener.onTouch(this, event))  10018行 
+
+result = true;  
+
+onTouchEvent 不会被执行
+if (!result && onTouchEvent(event))
+
+
+
+-------------result = false; ----------------------------
+11238
+
+ case MotionEvent.ACTION_UP:
+
+
+performClick();  5632行
+
+MainActivity里面设置坚挺
+getListenerInfo().mOnClickListener = l;
+
+
+ li.mOnClickListener.onClick(this);
+
+
+
+---------------------------------------------------------------
+
+
+Activity   +   ViewGroup   
+
+
+getWindow().superDispatchTouchEvent(ev)    PhoneWindow
+
+mDecor.superDispatchTouchEvent(event);
+
+
+DecorView extends FrameLayout 
+
+FrameLayout extends ViewGroup 
+没有实现  superDispatchTouchEvent
+
+
+
+        1.带着疑问或者你推测的结论去看。
+	2.画图、记录笔记
+	3.遍看源码的时候不但地去回溯代码，一定需要反复看。
+	4.要能及时刹住车。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
